@@ -7,24 +7,24 @@ package negocio;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import database.ConsultasEditorial;
+import database.ConsultasEscritor;
 import java.util.List;
-import modelo.Editorial;
+import modelo.Autor;
 
 /**
  *
  * @author georg
  */
-public class EditorialJson {
+public class EscritroJson {
     
-    public String datosEditorial() {
+    public String datosEscritor() {
         ObjectMapper mapper = new ObjectMapper();
         String retorno = "Error";
-        ConsultasEditorial consulta = new ConsultasEditorial();
-        List<Editorial> editoriales = consulta.selecEditorial("");
+        ConsultasEscritor consulta = new ConsultasEscritor();
+        List<Autor> dibujantes = consulta.selecEscritor("");
         
         try {
-            retorno = mapper.writeValueAsString(editoriales);
+            retorno = mapper.writeValueAsString(dibujantes);
         } catch (JsonProcessingException e) {
             System.err.println("Ediotrial Json " + e.getMessage());
             System.err.println(e.toString());
@@ -33,13 +33,13 @@ public class EditorialJson {
         return retorno;
     }
     
-    public String addEditorial(Editorial ed) {
+    public String addEscritor(Autor ed) {
         ObjectMapper mapper = new ObjectMapper();
-        String retorno = "";
-        ConsultasEditorial consulta = new ConsultasEditorial();
+        String retorno = "Error";
+        ConsultasEscritor consulta = new ConsultasEscritor();
         
-        try {
-            if (consulta.insertarEditorial(ed).equals("Insert Exitoso")) {
+         try {
+            if (consulta.insertarEscritor(ed).equals("Insert Exitoso")) {
                 retorno = "Isnertado";
             }
         } catch (Exception e) {
@@ -51,14 +51,14 @@ public class EditorialJson {
         return retorno;
     }
     
-    public String editorialById(String id) {
+    public String escritorById(String id) {
         ObjectMapper mapper = new ObjectMapper();
         String retorno = "Error";
-        ConsultasEditorial consulta = new ConsultasEditorial();
-        List<Editorial> editoriales = consulta.selecEditorial("id_editorial=" + id);
+        ConsultasEscritor consulta = new ConsultasEscritor();
+        List<Autor> dibujantes = consulta.selecEscritor("id_escritor=" + id);
         
         try {
-            retorno = mapper.writeValueAsString(editoriales);
+            retorno = mapper.writeValueAsString(dibujantes);
         } catch (JsonProcessingException e) {
             System.err.println("Ediotrial Json " + e.getMessage());
             System.err.println(e.toString());
@@ -67,13 +67,13 @@ public class EditorialJson {
         return retorno;
     }
     
-    public String modEditorial(Editorial ed) {
+    public String modEscritor(Autor ed) {
         ObjectMapper mapper = new ObjectMapper();
-        String retorno = "";
-        ConsultasEditorial consulta = new ConsultasEditorial();
+        String retorno = "Error";
+        ConsultasEscritor consulta = new ConsultasEscritor();
         
-        try {
-            if (consulta.updateEditorial(ed).equals("Update Exitoso")) {
+         try {
+            if (consulta.updateEscritor(ed).equals("Update Exitoso")) {
                 retorno = "Actualizado";
             }
         } catch (Exception e) {
@@ -85,14 +85,14 @@ public class EditorialJson {
         return retorno;
     }
     
-    public String delEditorial(Editorial ed) {
+    public String delEscritor(Autor ed) {
         ObjectMapper mapper = new ObjectMapper();
-        String retorno = "";
-        ConsultasEditorial consulta = new ConsultasEditorial();
+        String retorno = "Error";
+        ConsultasEscritor consulta = new ConsultasEscritor();
         
-        try {
-            if (consulta.deleteEditorial(ed).equals("Delete Exitoso")) {
-                retorno = "Isnertado";
+         try {
+            if (consulta.deleteEscritor(ed).equals("Update Exitoso")) {
+                retorno = "Borrado";
             }
         } catch (Exception e) {
             System.err.println("Ediotrial Json " + e.getMessage());

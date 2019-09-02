@@ -7,21 +7,21 @@ package negocio;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import database.ConsultasEditorial;
+import database.ConsultasDibujante;
 import java.util.List;
-import modelo.Editorial;
+import modelo.Autor;
 
 /**
  *
  * @author georg
  */
-public class EditorialJson {
+public class DibujanteJson {
     
-    public String datosEditorial() {
+    public String datosDibujantes() {
         ObjectMapper mapper = new ObjectMapper();
         String retorno = "Error";
-        ConsultasEditorial consulta = new ConsultasEditorial();
-        List<Editorial> editoriales = consulta.selecEditorial("");
+        ConsultasDibujante consulta = new ConsultasDibujante();
+        List<Autor> editoriales = consulta.selecDibujante("");
         
         try {
             retorno = mapper.writeValueAsString(editoriales);
@@ -33,13 +33,13 @@ public class EditorialJson {
         return retorno;
     }
     
-    public String addEditorial(Editorial ed) {
+    public String addDibujante(Autor ed) {
         ObjectMapper mapper = new ObjectMapper();
         String retorno = "";
-        ConsultasEditorial consulta = new ConsultasEditorial();
+        ConsultasDibujante consulta = new ConsultasDibujante();
         
         try {
-            if (consulta.insertarEditorial(ed).equals("Insert Exitoso")) {
+            if (consulta.insertarDibujante(ed).equals("Insert Exitoso")) {
                 retorno = "Isnertado";
             }
         } catch (Exception e) {
@@ -51,11 +51,11 @@ public class EditorialJson {
         return retorno;
     }
     
-    public String editorialById(String id) {
+    public String dibujanteById(String id) {
         ObjectMapper mapper = new ObjectMapper();
         String retorno = "Error";
-        ConsultasEditorial consulta = new ConsultasEditorial();
-        List<Editorial> editoriales = consulta.selecEditorial("id_editorial=" + id);
+        ConsultasDibujante consulta = new ConsultasDibujante();
+        List<Autor> editoriales = consulta.selecDibujante("id_dibujante=" + id);
         
         try {
             retorno = mapper.writeValueAsString(editoriales);
@@ -67,13 +67,13 @@ public class EditorialJson {
         return retorno;
     }
     
-    public String modEditorial(Editorial ed) {
+    public String modDibujante(Autor ed) {
         ObjectMapper mapper = new ObjectMapper();
         String retorno = "";
-        ConsultasEditorial consulta = new ConsultasEditorial();
+        ConsultasDibujante consulta = new ConsultasDibujante();
         
         try {
-            if (consulta.updateEditorial(ed).equals("Update Exitoso")) {
+            if (consulta.updateDibujante(ed).equals("Update Exitoso")) {
                 retorno = "Actualizado";
             }
         } catch (Exception e) {
@@ -85,14 +85,14 @@ public class EditorialJson {
         return retorno;
     }
     
-    public String delEditorial(Editorial ed) {
+    public String delDibujante(Autor ed) {
         ObjectMapper mapper = new ObjectMapper();
         String retorno = "";
-        ConsultasEditorial consulta = new ConsultasEditorial();
+        ConsultasDibujante consulta = new ConsultasDibujante();
         
         try {
-            if (consulta.deleteEditorial(ed).equals("Delete Exitoso")) {
-                retorno = "Isnertado";
+            if (consulta.deleteDibujante(ed).equals("Delete Exitoso")) {
+                retorno = "Borrado";
             }
         } catch (Exception e) {
             System.err.println("Ediotrial Json " + e.getMessage());

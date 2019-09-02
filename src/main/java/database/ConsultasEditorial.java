@@ -24,15 +24,15 @@ public class ConsultasEditorial {
     private final String PWD = "";
     private final String TB = "Editoriales";
 
-    public void insertarEditorial(Editorial e) {
+    public String insertarEditorial(Editorial e) {
         Conexion con = new Conexion(DB, USER, PWD);
         String query = "INSERT INTO " + TB + "(nombre_editorial) values('" + e.getNombre() + "')";
         String result = con.insertUpdatDel(query);
 
         if ("Ok".equals(result)) {
-            System.err.println("Insert Exitoso");
+            return "Insert Exitoso";
         } else {
-            System.err.println("Falló el insert");
+            return "Fallo al insertar";
         }
     }
 
@@ -73,8 +73,8 @@ public class ConsultasEditorial {
 
         try {
             while (rs.next()) {
-                editorial.setId(rs.getInt("id_comic"));
-                editorial.setNombre(rs.getString("nombre_comic"));
+                editorial.setId(rs.getInt("id_editorial"));
+                editorial.setNombre(rs.getString("nombre_editorial"));
                 listado.add(editorial);
                 editorial = new Editorial();
             }

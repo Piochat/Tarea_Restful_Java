@@ -32,4 +32,22 @@ public class EditorialJson {
         
         return retorno;
     }
+    
+    public String addEditorial(Editorial ed) {
+        ObjectMapper mapper = new ObjectMapper();
+        String retorno = "";
+        ConsultasEditorial consulta = new ConsultasEditorial();
+        
+        try {
+            if (consulta.insertarEditorial(ed).equals("Insert Exitoso")) {
+                retorno = "Isnertado";
+            }
+        } catch (Exception e) {
+            System.err.println("Ediotrial Json " + e.getMessage());
+            System.err.println(e.toString());
+            retorno = "Error";
+        }
+        
+        return null;
+    }
 }

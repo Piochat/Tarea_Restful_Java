@@ -10,9 +10,11 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
+import modelo.Editorial;
 import negocio.EditorialJson;
 
 /**
@@ -31,7 +33,22 @@ public class EditorialResource {
      */
     public EditorialResource() {
     }
-
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON) 
+    @Produces(MediaType.APPLICATION_JSON) 
+    public String postJson(Editorial cardamomo) {
+        EditorialJson editorial = new EditorialJson();
+        
+        try {
+            editorial.addEditorial(cardamomo);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+  
+        return cardamomo.getNombre();
+    }
+    
     /**
      * Retrieves representation of an instance of API.EditorialResource
      * @return an instance of java.lang.String

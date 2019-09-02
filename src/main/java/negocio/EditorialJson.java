@@ -48,7 +48,7 @@ public class EditorialJson {
             retorno = "Error";
         }
         
-        return null;
+        return retorno;
     }
     
     public String editorialById(String id) {
@@ -67,7 +67,39 @@ public class EditorialJson {
         return retorno;
     }
     
-    public String updateEditorial(Editorial ed) {
-        return null;
+    public String modEditorial(Editorial ed) {
+        ObjectMapper mapper = new ObjectMapper();
+        String retorno = "";
+        ConsultasEditorial consulta = new ConsultasEditorial();
+        
+        try {
+            if (consulta.updateEditorial(ed).equals("Update Exitoso")) {
+                retorno = "Isnertado";
+            }
+        } catch (Exception e) {
+            System.err.println("Ediotrial Json " + e.getMessage());
+            System.err.println(e.toString());
+            retorno = "Error";
+        }
+        
+        return retorno;
+    }
+    
+    public String delEditorial(Editorial ed) {
+        ObjectMapper mapper = new ObjectMapper();
+        String retorno = "";
+        ConsultasEditorial consulta = new ConsultasEditorial();
+        
+        try {
+            if (consulta.deleteEditorial(ed).equals("Delete Exitoso")) {
+                retorno = "Isnertado";
+            }
+        } catch (Exception e) {
+            System.err.println("Ediotrial Json " + e.getMessage());
+            System.err.println(e.toString());
+            retorno = "Error";
+        }
+        
+        return retorno;
     }
 }

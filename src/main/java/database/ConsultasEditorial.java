@@ -36,27 +36,27 @@ public class ConsultasEditorial {
         }
     }
 
-    public void updateEditorial(Editorial e) {
+    public String updateEditorial(Editorial e) {
         Conexion con = new Conexion(DB, USER, PWD);
-        String query = "UPDATE " + TB + " SET `nombre_editorial`=[value-2] WHERE `id_editorial`=" + e.getId();
+        String query = "UPDATE " + TB + " SET `nombre_editorial`='"+ e.getNombre() +"' WHERE `id_editorial`=" + e.getId();
         String result = con.insertUpdatDel(query);
 
         if ("Ok".equals(result)) {
-            System.err.println("Update Exitoso");
+            return "Update Exitoso";
         } else {
-            System.err.println("Falló el update");
+            return "Falló el update";
         }
     }
 
-    public void deleteEditorial(Editorial e) {
+    public String deleteEditorial(Editorial e) {
         Conexion con = new Conexion(DB, USER, PWD);
         String query = "DELETE FROM `" + TB + "` WHERE `id_editorial`=" + e.getId();
         String result = con.insertUpdatDel(query);
 
         if ("Ok".equals(result)) {
-            System.err.println("Update Exitoso");
+            return "Delete Exitoso";
         } else {
-            System.err.println("Falló el update");
+            return "Falló el Delete";
         }
     }
 

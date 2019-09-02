@@ -8,6 +8,7 @@ package API;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -79,9 +80,39 @@ public class EditorialResource {
     /**
      * PUT method for updating or creating an instance of EditorialResource
      * @param content representation for the resource
+     * @return 
      */
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(Editorial content) {
+    public String putJson(Editorial content) {
+        EditorialJson editorial = new EditorialJson();
+        
+        try {
+            editorial.modEditorial(content);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+  
+        return content.getNombre();
+    }
+    
+    /**
+     * DELETE method for delete an instance of EditorialResource
+     * @param content representation for the resource
+     * @return 
+     */
+    @DELETE
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String deleteJson(Editorial content) {
+        EditorialJson editorial = new EditorialJson();
+        String str = "";
+        
+        try {
+            editorial.modEditorial(content);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+  
+        return str;
     }
 }

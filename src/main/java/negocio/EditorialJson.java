@@ -50,4 +50,24 @@ public class EditorialJson {
         
         return null;
     }
+    
+    public String editorialById(String id) {
+        ObjectMapper mapper = new ObjectMapper();
+        String retorno = "Error";
+        ConsultasEditorial consulta = new ConsultasEditorial();
+        List<Editorial> editoriales = consulta.selecEditorial("id_editorial=" + id);
+        
+        try {
+            retorno = mapper.writeValueAsString(editoriales);
+        } catch (JsonProcessingException e) {
+            System.err.println("Ediotrial Json " + e.getMessage());
+            System.err.println(e.toString());
+        }
+        
+        return retorno;
+    }
+    
+    public String updateEditorial(Editorial ed) {
+        return null;
+    }
 }

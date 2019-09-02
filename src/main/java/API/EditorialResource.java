@@ -108,7 +108,7 @@ public class EditorialResource {
         String str = "";
         
         try {
-            editorial.modEditorial(content);
+            editorial.delEditorial(content);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }

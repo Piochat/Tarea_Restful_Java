@@ -15,7 +15,7 @@ import modelo.Autor;
  *
  * @author georg
  */
-public class EscritroJson {
+public class EscritorJson {
     
     public String datosEscritor() {
         ObjectMapper mapper = new ObjectMapper();

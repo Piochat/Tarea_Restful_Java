@@ -6,6 +6,11 @@
 package database;
 
 import database.Conexion;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Editorial;
 
 /**
@@ -23,35 +28,61 @@ public class ConsultasEditorial {
         Conexion con = new Conexion(DB, USER, PWD);
         String query = "INSERT INTO " + TB + "(nombre_editorial) values('" + e.getNombre() + "')";
         String result = con.insertUpdatDel(query);
-        
+
         if ("Ok".equals(result)) {
             System.err.println("Insert Exitoso");
         } else {
             System.err.println("Falló el insert");
         }
     }
-    
+
     public void updateEditorial(Editorial e) {
         Conexion con = new Conexion(DB, USER, PWD);
         String query = "UPDATE " + TB + " SET `nombre_editorial`=[value-2] WHERE `id_editorial`=" + e.getId();
         String result = con.insertUpdatDel(query);
-        
+
         if ("Ok".equals(result)) {
             System.err.println("Update Exitoso");
         } else {
             System.err.println("Falló el update");
         }
     }
-    
+
     public void deleteEditorial(Editorial e) {
         Conexion con = new Conexion(DB, USER, PWD);
-        String query = "DELETE FROM `" + TB +"` WHERE `id_editorial`=" + e.getId();
+        String query = "DELETE FROM `" + TB + "` WHERE `id_editorial`=" + e.getId();
         String result = con.insertUpdatDel(query);
-        
+
         if ("Ok".equals(result)) {
             System.err.println("Update Exitoso");
         } else {
             System.err.println("Falló el update");
         }
+    }
+
+    public ArrayList<Editorial> selecEditorial(String condicion) {
+        if (condicion.equals("")) {
+            condicion = "1=1";
+        }
+
+        String query = "SELECT * FROM `editoriales` WHERE " + condicion;
+        ArrayList<Editorial> listado = new ArrayList<>();
+        Editorial editorial = new Editorial();
+        Conexion con = new Conexion(DB, USER, PWD);
+        ResultSet rs = con.select(query);
+
+        try {
+            while (rs.next()) {
+                editorial.setId(rs.getInt("id_comic"));
+                editorial.setNombre(rs.getString("nombre_comic"));
+                listado.add(editorial);
+                editorial = new Editorial();
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultasEditorial.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return listado;
     }
 }

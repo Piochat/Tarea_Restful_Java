@@ -26,7 +26,7 @@ public class EditorialJson {
         try {
             retorno = mapper.writeValueAsString(editoriales);
         } catch (JsonProcessingException e) {
-            System.err.println("Ediotrial Json " + e.getMessage());
+            System.err.println("Editorial Json " + e.getMessage());
             System.err.println(e.toString());
         }
         
@@ -43,7 +43,7 @@ public class EditorialJson {
                 retorno = "Isnertado";
             }
         } catch (Exception e) {
-            System.err.println("Ediotrial Json " + e.getMessage());
+            System.err.println("Editorial Json " + e.getMessage());
             System.err.println(e.toString());
             retorno = "Error";
         }
@@ -60,7 +60,7 @@ public class EditorialJson {
         try {
             retorno = mapper.writeValueAsString(editoriales);
         } catch (JsonProcessingException e) {
-            System.err.println("Ediotrial Json " + e.getMessage());
+            System.err.println("Editorial Json " + e.getMessage());
             System.err.println(e.toString());
         }
         
@@ -77,7 +77,7 @@ public class EditorialJson {
                 retorno = "Actualizado";
             }
         } catch (Exception e) {
-            System.err.println("Ediotrial Json " + e.getMessage());
+            System.err.println("Editorial Json " + e.getMessage());
             System.err.println(e.toString());
             retorno = "Error";
         }
@@ -95,7 +95,7 @@ public class EditorialJson {
                 retorno = "Isnertado";
             }
         } catch (Exception e) {
-            System.err.println("Ediotrial Json " + e.getMessage());
+            System.err.println("Editorial Json " + e.getMessage());
             System.err.println(e.toString());
             retorno = "Error";
         }

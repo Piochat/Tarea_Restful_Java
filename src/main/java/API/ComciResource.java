@@ -16,57 +16,56 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
-import modelo.Autor;
-import negocio.DibujanteJson;
+import modelo.Comic;
+import negocio.ComicJson;
 
 /**
  * REST Web Service
  *
  * @author georg
  */
-@Path("dibujante")
-public class DibujanteResource {
+@Path("comic")
+public class ComciResource {
 
     @Context
     private UriInfo context;
 
     /**
-     * Creates a new instance of DibujanteResource
+     * Creates a new instance of ComciResource
      */
-    public DibujanteResource() {
+    public ComciResource() {
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String postJson(Autor cardamomo) {
-        DibujanteJson dibujante = new DibujanteJson();
-
+    public String postJson(Comic cardamomo) {
+        ComicJson comic = new ComicJson();
+        
         try {
-            dibujante.addDibujante(cardamomo);
+            comic.addComic(cardamomo);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-
+  
+        
         return cardamomo.getNombre();
     }
-
+    
     /**
-     * Retrieves representation of an instance of API.DibujanteResource
-     *
+     * Retrieves representation of an instance of API.ComciResource
      * @return an instance of java.lang.String
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getJson() {
         //TODO return proper representation object
-        DibujanteJson dibujante = new DibujanteJson();
-        return dibujante.datosDibujantes();
+        ComicJson comic = new ComicJson();
+        return comic.datosComic();
     }
-
+    
     /**
-     * Retrieves representation of an instance of API.EditorialResource
-     *
+     * Retrieves representation of an instance of API.ComciResource
      * @param id
      * @return an instance of java.lang.String
      */
@@ -75,30 +74,29 @@ public class DibujanteResource {
     @Produces(MediaType.APPLICATION_JSON)
     public String getJsonById(@PathParam("id") String id) {
         //TODO return proper representation object
-        DibujanteJson dibujante = new DibujanteJson();
-        return dibujante.dibujanteById(id);
+        ComicJson comic = new ComicJson();
+        return comic.comicById(id);
     }
 
     /**
-     * PUT method for updating or creating an instance of DibujanteResource
-     *
+     * PUT method for updating or creating an instance of ComciResource
      * @param content representation for the resource
-     * @return
+     * @return 
      */
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public String putJson(Autor content) {
-        DibujanteJson dibujante = new DibujanteJson();
-
+    public String putJson(Comic content) {
+        ComicJson comic = new ComicJson();
+        
         try {
-            dibujante.modDibujante(content);
+            comic.modComic(content);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-
+        
         return content.getNombre();
     }
-
+    
     /**
      * DELETE method for delete an instance of EditorialResource
      *
@@ -107,16 +105,15 @@ public class DibujanteResource {
      */
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
-    public String deleteJson(Autor content) {
-        DibujanteJson dibujante = new DibujanteJson();
+    public String deleteJson(Comic content) {
+        ComicJson comic = new ComicJson();
         String str = "";
-
         try {
-            dibujante.delDibujante(content);
+            comic.delComic(content);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-
-        return str;
+        
+        return content.getNombre();
     }
 }

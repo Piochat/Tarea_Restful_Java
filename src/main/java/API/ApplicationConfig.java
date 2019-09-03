@@ -29,6 +29,7 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(API.ComciResource.class);
         resources.add(API.DibujanteResource.class);
         resources.add(API.EditorialResource.class);
         resources.add(API.EscritorResource.class);

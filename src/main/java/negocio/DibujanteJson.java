@@ -26,7 +26,7 @@ public class DibujanteJson {
         try {
             retorno = mapper.writeValueAsString(editoriales);
         } catch (JsonProcessingException e) {
-            System.err.println("Ediotrial Json " + e.getMessage());
+            System.err.println("Dibujante Json " + e.getMessage());
             System.err.println(e.toString());
         }
         
@@ -43,7 +43,7 @@ public class DibujanteJson {
                 retorno = "Isnertado";
             }
         } catch (Exception e) {
-            System.err.println("Ediotrial Json " + e.getMessage());
+            System.err.println("Dibujante Json " + e.getMessage());
             System.err.println(e.toString());
             retorno = "Error";
         }
@@ -60,7 +60,7 @@ public class DibujanteJson {
         try {
             retorno = mapper.writeValueAsString(editoriales);
         } catch (JsonProcessingException e) {
-            System.err.println("Ediotrial Json " + e.getMessage());
+            System.err.println("Dibujante Json " + e.getMessage());
             System.err.println(e.toString());
         }
         
@@ -77,7 +77,7 @@ public class DibujanteJson {
                 retorno = "Actualizado";
             }
         } catch (Exception e) {
-            System.err.println("Ediotrial Json " + e.getMessage());
+            System.err.println("Dibujante Json " + e.getMessage());
             System.err.println(e.toString());
             retorno = "Error";
         }
@@ -95,7 +95,7 @@ public class DibujanteJson {
                 retorno = "Borrado";
             }
         } catch (Exception e) {
-            System.err.println("Ediotrial Json " + e.getMessage());
+            System.err.println("Dibujante Json " + e.getMessage());
             System.err.println(e.toString());
             retorno = "Error";
         }

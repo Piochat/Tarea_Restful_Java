@@ -20,8 +20,8 @@ import modelo.Editorial;
 public class ConsultasEditorial {
 
     private final String DB = "comicsdb";
-    private final String USER = "root";
-    private final String PWD = "";
+    private final String USER = "piocha";
+    private final String PWD = "koke";
     private final String TB = "Editoriales";
 
     public String insertarEditorial(Editorial e) {

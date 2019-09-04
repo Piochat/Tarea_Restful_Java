@@ -19,8 +19,8 @@ import modelo.Autor;
 public class ConsultasEscritor {
 
     private final String DB = "comicsdb";
-    private final String USER = "root";
-    private final String PWD = "";
+    private final String USER = "piocha";
+    private final String PWD = "kok";
     private final String TB = "Escritores";
 
     public String insertarEscritor(Autor e) {

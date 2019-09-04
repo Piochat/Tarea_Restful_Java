@@ -30,14 +30,14 @@ public class Conexion {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            System.err.println("Error Conexion: " + e.getMessage() + " " + e.toString());
+            System.err.println("Error Conexion: " + e.getMessage() + " \nEs el Driver " + e.toString());
             System.exit(-1);
         }
     }
 
     private void abrirConxion() {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/" + dbName, user, pwd);
+            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/" + dbName +"?autoReconnect=true&useSSL=false", user, pwd);
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());

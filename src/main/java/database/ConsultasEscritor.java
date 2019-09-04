@@ -20,7 +20,7 @@ public class ConsultasEscritor {
 
     private final String DB = "comicsdb";
     private final String USER = "piocha";
-    private final String PWD = "kok";
+    private final String PWD = "koke";
     private final String TB = "Escritores";
 
     public String insertarEscritor(Autor e) {

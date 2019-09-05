@@ -65,7 +65,7 @@ public class ConsultasEditorial {
             condicion = "1=1";
         }
 
-        String query = "SELECT * FROM `editoriales` WHERE " + condicion;
+        String query = "SELECT * FROM `"+TB+"` WHERE " + condicion;
         ArrayList<Editorial> listado = new ArrayList<>();
         Editorial editorial = new Editorial();
         Conexion con = new Conexion(DB, USER, PWD);
@@ -79,7 +79,8 @@ public class ConsultasEditorial {
                 editorial = new Editorial();
             }
             rs.close();
-        } catch (SQLException ex) {
+        } catch (NullPointerException | SQLException ex) {
+            System.err.println("Trono en la parte del select " + ex.getMessage());
             Logger.getLogger(ConsultasEditorial.class.getName()).log(Level.SEVERE, null, ex);
         }
         
